@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetMaster | Caballos y Gallos</title>
+    <!-- Tailwind CSS para diseño moderno y responsivo -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- FontAwesome para los iconos -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans min-h-screen flex flex-col">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-trophy text-amber-500 text-2xl"></i>
+                <span class="text-xl font-black tracking-wider uppercase text-white">Bet<span class="text-amber-500">Master</span></span>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#" class="text-amber-500 border-b-2 border-amber-500 pb-1">En Vivo</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Próximas Carreras</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Resultados</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Promociones</a>
+            </nav>
+            <div class="flex items-center space-x-3">
+                <button class="text-sm font-semibold text-gray-300 hover:text-white px-4 py-2">Iniciar Sesión</button>
+                <button class="bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold text-sm px-4 py-2 rounded-lg transition shadow-lg shadow-amber-500/20">Registrarse</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container mx-auto px-4 py-6 flex-1 grid grid-cols-1 lg:grid-cols-4 gap-6">
+        
+        <!-- COLUMNA IZQUIERDA: MENÚ DE DEPORTES -->
+        <aside class="lg:col-span-1 bg-gray-900 rounded-xl p-4 border border-gray-800 h-fit">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 px-2">Categorías</h2>
+            <div class="space-y-1">
+                <button onclick="switchTab('caballos')" id="btn-caballos" class="w-full flex items-center justify-between p-3 rounded-lg bg-amber-500 text-gray-950 font-bold transition">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-horse text-lg"></i>
+                        <span>Carreras de Caballos</span>
+                    </div>
+                    <span class="bg-amber-600 text-white text-xs px-2 py-0.5 rounded-full" id="count-caballos">4</span>
+                </button>
+                <button onclick="switchTab('gallos')" id="btn-gallos" class="w-full flex items-center justify-between p-3 rounded-lg text-gray-400 hover:bg-gray-800 hover:text-white transition">
+                    <div class="flex items-center space-x-3">
+                        <i class="fa-solid fa-feather-pointed text-lg"></i>
+                        <span>Peleas de Gallos</span>
+                    </div>
+                    <span class="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded-full" id="count-gallos">3</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- COLUMNA CENTRAL: LISTA DE EVENTOS -->
+        <section class="lg:col-span-2 space-y-6">
+            
+            <!-- BANNER DE BIENVENIDA -->
+            <div class="bg-gradient-to-r from-amber-600 to-amber-900 rounded-2xl p-6 relative overflow-hidden shadow-xl">
+                <div class="relative z-10 max-w-md">
+                    <span class="bg-gray-950/40 text-amber-300 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">Bono de Bienvenida</span>
+                    <h1 class="text-2xl md:text-3xl font-black text-white mt-2 leading-tight">¡Duplica tu primer depósito hasta $200!</h1>
+                    <p class="text-amber-100 text-sm mt-1">Aplica para los mejores hipódromos y palenques internacionales.</p>
+                </div>
+                <i class="fa-solid fa-bolt absolute right-6 bottom-[-20px] text-9xl text-amber-500/10 pointer-events-none"></i>
+            </div>
+
+            <!-- EVENTOS: CABALLOS -->
+            <div id="section-caballos" class="space-y-4">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-horse text-amber-500"></i> Hipódromo Virtual (En Vivo)</h3>
+                    <span class="text-xs text-emerald-400 flex items-center gap-1 font-semibold"><span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> EN VIVO</span>
+                </div>
+
+                <!-- Evento 1 -->
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 hover:border-gray-700 transition">
+                    <div class="flex justify-between text-xs text-gray-400 mb-3">
+                        <span>Carrera 5 - Derby Churchill Downs (1,200m)</span>
+                        <span class="text-amber-500 font-medium">Falta 02:45</span>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between bg-gray-950 p-3 rounded-lg border border-gray-800">
+                            <div class="flex items-center space-x-3">
+                                <span class="font-bold text-amber-500 w-5">#1</span>
+                                <div>
+                                    <p class="font-bold text-white text-sm">Furia del Desierto</p>
+                                    <p class="text-xs text-gray-500">Jinete: J. Santos</p>
+                                </div>
+                            </div>
+                            <button onclick="selectBet('Furia del Desierto (Caballo #1)', 2.50)" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-amber-500 font-bold px-4 py-2 rounded-lg text-sm transition min-w-[60px]">2.50</button>
+                        </div>
+                        <div class="flex items-center justify-between bg-gray-950 p-3 rounded-lg border border-gray-800">
+                            <div class="flex items-center space-x-3">
+                                <span class="font-bold text-amber-500 w-5">#2</span>
+                                <div>
+                                    <p class="font-bold text-white text-sm">Rayo de Plata</p>
+                                    <p class="text-xs text-gray-500">Jinete: M. Smith</p>
+                                </div>
+                            </div>
+                            <button onclick="selectBet('Rayo de Plata (Caballo #2)', 4.10)" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-amber-500 font-bold px-4 py-2 rounded-lg text-sm transition min-w-[60px]">4.10</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EVENTOS: GALLOS -->
+            <div id="section-gallos" class="space-y-4 hidden">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2"><i class="fa-solid fa-feather-pointed text-amber-500"></i> Palenque Internacional</h3>
+                    <span class="text-xs text-emerald-400 flex items-center gap-1 font-semibold"><span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> EN VIVO</span>
+                </div>
+
+                <!-- Evento 1 Gallos -->
+                <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 hover:border-gray-700 transition">
+                    <div class="flex justify-between text-xs text-gray-400 mb-3">
+                        <span>Pelea Estelar - Torneo San Juan</span>
+                        <span class="text-amber-500 font-medium">En Arena</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-950 p-4 rounded-xl border-l-4 border-red-500 flex flex-col justify-between items-center text-center">
+                            <div>
+                                <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Gallo Colorado</span>
+                                <h4 class="font-black text-white text-base mt-1">El Espartano</h4>
+                            </div>
+                            <button onclick="selectBet('El Espartano (Gallo Colorado)', 1.85)" class="mt-4 w-full bg-gray-800 hover:bg-red-600 text-white font-bold py-2 rounded-lg text-sm transition">1.85</button>
+                        </div>
+                        <div class="bg-gray-950 p-4 rounded-xl border-l-4 border-emerald-500 flex flex-col justify-between items-center text-center">
+                            <div>
+                                <span class="text-xs font-bold text-emerald-500 uppercase tracking-widest">Gallo Giro</span>
+                                <h4 class="font-black text-white text-base mt-1">Huracán Azteca</h4>
+                            </div>
+                            <button onclick="selectBet('Huracán Azteca (Gallo Giro)', 1.95)" class="mt-4 w-full bg-gray-800 hover:bg-emerald-600 text-white font-bold py-2 rounded-lg text-sm transition">1.95</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- COLUMNA DERECHA: BOLETO DE APUESTAS -->
+        <aside class="lg:col-span-1">
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 sticky top-20 shadow-2xl">
+                <div class="flex items-center space-x-2 border-b border-gray-800 pb-3 mb-4">
